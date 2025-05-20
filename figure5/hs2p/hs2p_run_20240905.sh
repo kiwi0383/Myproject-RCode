@@ -1,0 +1,1 @@
+python /home/xisx/pipeline/hs2p/patch_extraction.py --config-file /home/xisx/Projects/20250227_JiL_lung/hs2p/config/extraction/default.yaml

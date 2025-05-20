@@ -1,0 +1,478 @@
+nohup: ignoring input
+
+Load Dataset
+label column: label
+label dictionary: {'Low': 0, 'High': 1}
+number of classes: 2
+slide-level counts:  
+ label
+1    208
+0    253
+Name: count, dtype: int64
+Patient-LVL; Number of samples registered in class 0: 253
+Slide-LVL; Number of samples registered in class 0: 253
+Patient-LVL; Number of samples registered in class 1: 208
+Slide-LVL; Number of samples registered in class 1: 208
+split_dir:  splits/task_1_lung_risk_100
+################# Settings ###################
+num_splits:  5
+k_start:  -1
+k_end:  -1
+task:  task_1_lung_risk
+max_epochs:  200
+results_dir:  ./results
+lr:  0.0004
+experiment:  JiL_lung_risk
+reg:  1e-05
+label_frac:  1.0
+bag_loss:  ce
+seed:  1
+model_type:  clam_sb
+model_size:  small
+use_drop_out:  0.75
+weighted_sample:  False
+opt:  adam
+bag_weight:  0.7
+inst_loss:  svm
+B:  8
+split_dir:  splits/task_1_lung_risk_100
+
+Training Fold 0!
+
+Init train/val/test splits... 
+Done!
+Training on 368 samples
+Validating on 93 samples
+Testing on 93 samples
+
+Init loss function... Done!
+
+Init Model... Setting tau to 1.0
+Done!
+CLAM_SB(
+  (attention_net): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): ReLU()
+    (2): Dropout(p=0.75, inplace=False)
+    (3): Linear(in_features=512, out_features=256, bias=True)
+    (4): ReLU()
+    (5): Dropout(p=0.75, inplace=False)
+    (6): Linear(in_features=256, out_features=512, bias=True)
+    (7): ReLU()
+    (8): Dropout(p=0.75, inplace=False)
+    (9): Attn_Net_Gated(
+      (attention_a): Sequential(
+        (0): Linear(in_features=512, out_features=256, bias=True)
+        (1): Tanh()
+        (2): Dropout(p=0.75, inplace=False)
+      )
+      (attention_b): Sequential(
+        (0): Linear(in_features=512, out_features=256, bias=True)
+        (1): Sigmoid()
+        (2): Dropout(p=0.75, inplace=False)
+      )
+      (attention_c): Linear(in_features=256, out_features=1, bias=True)
+    )
+  )
+  (classifiers): Linear(in_features=512, out_features=2, bias=True)
+  (instance_classifiers): ModuleList(
+    (0): Linear(in_features=512, out_features=2, bias=True)
+    (1): Linear(in_features=512, out_features=2, bias=True)
+  )
+  (instance_loss_fn): SmoothTop1SVM()
+)
+Total number of parameters: 1053703
+Total number of trainable parameters: 1053703
+
+Init optimizer ... Done!
+
+Init Loaders... Done!
+
+Setup EarlyStopping... Done!
+
+
+batch 19, loss: 0.6434, label: 0, bag_size: 10167
+batch 39, loss: 0.7285, label: 1, bag_size: 72240
+batch 59, loss: 0.6553, label: 0, bag_size: 105745
+batch 79, loss: 0.7939, label: 1, bag_size: 21730
+batch 99, loss: 0.7926, label: 1, bag_size: 24926
+batch 119, loss: 0.6220, label: 0, bag_size: 53629
+batch 139, loss: 0.6432, label: 0, bag_size: 16109
+batch 159, loss: 0.7537, label: 1, bag_size: 53194
+batch 179, loss: 0.7331, label: 1, bag_size: 69982
+batch 199, loss: 0.7266, label: 1, bag_size: 35613
+batch 219, loss: 0.6390, label: 0, bag_size: 3187
+batch 239, loss: 0.7326, label: 1, bag_size: 62720
+batch 259, loss: 0.6447, label: 0, bag_size: 24361
+batch 279, loss: 0.6355, label: 0, bag_size: 4238
+batch 299, loss: 0.7920, label: 1, bag_size: 79468
+batch 319, loss: 0.6310, label: 0, bag_size: 19544
+batch 339, loss: 0.6012, label: 0, bag_size: 10444
+batch 359, loss: 0.5815, label: 0, bag_size: 10076
+Epoch: 0, train_loss: 0.6932, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.4171
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+Validation loss decreased (inf --> 0.688537).  Saving model ...
+
+
+batch 19, loss: 0.8048, label: 1, bag_size: 19264
+batch 39, loss: 0.6118, label: 0, bag_size: 14483
+batch 59, loss: 0.6239, label: 0, bag_size: 9926
+batch 79, loss: 0.6549, label: 0, bag_size: 116769
+batch 99, loss: 0.7330, label: 1, bag_size: 7718
+batch 119, loss: 0.7226, label: 0, bag_size: 21661
+batch 139, loss: 0.7193, label: 1, bag_size: 65148
+batch 159, loss: 0.7191, label: 1, bag_size: 66730
+batch 179, loss: 0.6468, label: 0, bag_size: 12255
+batch 199, loss: 0.6017, label: 0, bag_size: 71575
+batch 219, loss: 0.5903, label: 0, bag_size: 79660
+batch 239, loss: 0.5192, label: 0, bag_size: 10444
+batch 259, loss: 0.8968, label: 1, bag_size: 55873
+batch 279, loss: 0.8852, label: 1, bag_size: 95270
+batch 299, loss: 0.8923, label: 1, bag_size: 86019
+batch 319, loss: 0.5848, label: 0, bag_size: 84237
+batch 339, loss: 0.8094, label: 1, bag_size: 70419
+batch 359, loss: 0.5979, label: 0, bag_size: 125647
+Epoch: 1, train_loss: 0.6911, train_error: 0.4701
+class 0: acc 0.9504950495049505, correct 192/202
+class 1: acc 0.018072289156626505, correct 3/166
+
+Val Set, val_loss: 0.6884, val_error: 0.4516, auc: 0.5621
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+Validation loss decreased (0.688537 --> 0.688440).  Saving model ...
+
+
+batch 19, loss: 0.6011, label: 0, bag_size: 18069
+batch 39, loss: 0.5954, label: 0, bag_size: 47970
+batch 59, loss: 0.8362, label: 1, bag_size: 11048
+batch 79, loss: 0.5623, label: 0, bag_size: 31338
+batch 99, loss: 0.8323, label: 1, bag_size: 17332
+batch 119, loss: 0.5901, label: 0, bag_size: 16239
+batch 139, loss: 0.5773, label: 0, bag_size: 58318
+batch 159, loss: 0.5574, label: 0, bag_size: 92089
+batch 179, loss: 0.8715, label: 1, bag_size: 45463
+batch 199, loss: 0.5442, label: 0, bag_size: 68193
+batch 219, loss: 0.5450, label: 0, bag_size: 50022
+batch 239, loss: 0.5425, label: 0, bag_size: 68939
+batch 259, loss: 0.5407, label: 0, bag_size: 14483
+batch 279, loss: 0.8356, label: 1, bag_size: 52796
+batch 299, loss: 0.8048, label: 1, bag_size: 6445
+batch 319, loss: 0.5903, label: 0, bag_size: 15921
+batch 339, loss: 0.8004, label: 1, bag_size: 67678
+batch 359, loss: 0.6267, label: 0, bag_size: 58854
+Epoch: 2, train_loss: 0.6889, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6893, val_error: 0.4516, auc: 0.5495
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 1 out of 20
+
+
+batch 19, loss: 0.7233, label: 1, bag_size: 48089
+batch 39, loss: 0.6601, label: 0, bag_size: 13191
+batch 59, loss: 0.6671, label: 0, bag_size: 61693
+batch 79, loss: 0.7340, label: 1, bag_size: 8693
+batch 99, loss: 0.7261, label: 1, bag_size: 37612
+batch 119, loss: 0.7211, label: 1, bag_size: 7519
+batch 139, loss: 0.7344, label: 1, bag_size: 33583
+batch 159, loss: 0.6421, label: 0, bag_size: 175765
+batch 179, loss: 0.6370, label: 0, bag_size: 69569
+batch 199, loss: 0.6351, label: 0, bag_size: 67490
+batch 219, loss: 0.6314, label: 0, bag_size: 71136
+batch 239, loss: 0.6276, label: 0, bag_size: 116440
+batch 259, loss: 0.6147, label: 0, bag_size: 24061
+batch 279, loss: 0.6132, label: 0, bag_size: 40234
+batch 299, loss: 0.7803, label: 1, bag_size: 22689
+batch 319, loss: 0.7777, label: 1, bag_size: 62720
+batch 339, loss: 0.6178, label: 0, bag_size: 97630
+batch 359, loss: 0.6127, label: 0, bag_size: 23997
+Epoch: 3, train_loss: 0.6896, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.5551
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 2 out of 20
+
+
+batch 19, loss: 0.5975, label: 0, bag_size: 28454
+batch 39, loss: 0.5784, label: 0, bag_size: 61693
+batch 59, loss: 0.8256, label: 1, bag_size: 20946
+batch 79, loss: 0.8074, label: 1, bag_size: 50674
+batch 99, loss: 0.6081, label: 0, bag_size: 5963
+batch 119, loss: 0.7947, label: 1, bag_size: 13111
+batch 139, loss: 0.8021, label: 1, bag_size: 60564
+batch 159, loss: 0.5858, label: 0, bag_size: 32928
+batch 179, loss: 0.5895, label: 0, bag_size: 19491
+batch 199, loss: 0.5813, label: 0, bag_size: 24361
+batch 219, loss: 0.5891, label: 0, bag_size: 62010
+batch 239, loss: 0.8150, label: 1, bag_size: 110037
+batch 259, loss: 0.5785, label: 0, bag_size: 7220
+batch 279, loss: 0.8162, label: 1, bag_size: 11808
+batch 299, loss: 0.6049, label: 0, bag_size: 76176
+batch 319, loss: 0.7871, label: 1, bag_size: 33948
+batch 339, loss: 0.6063, label: 0, bag_size: 18676
+batch 359, loss: 0.7825, label: 1, bag_size: 81810
+Epoch: 4, train_loss: 0.6896, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.5264
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 3 out of 20
+
+
+batch 19, loss: 0.7723, label: 1, bag_size: 126771
+batch 39, loss: 0.7626, label: 1, bag_size: 2439
+batch 59, loss: 0.6269, label: 0, bag_size: 35065
+batch 79, loss: 0.7668, label: 1, bag_size: 62720
+batch 99, loss: 0.6187, label: 0, bag_size: 51360
+batch 119, loss: 0.7755, label: 1, bag_size: 46002
+batch 139, loss: 0.6003, label: 0, bag_size: 15318
+batch 159, loss: 0.5978, label: 0, bag_size: 69679
+batch 179, loss: 0.8110, label: 1, bag_size: 17626
+batch 199, loss: 0.8112, label: 1, bag_size: 24926
+batch 219, loss: 0.8127, label: 1, bag_size: 5960
+batch 239, loss: 0.8043, label: 1, bag_size: 52796
+batch 259, loss: 0.5990, label: 0, bag_size: 61693
+batch 279, loss: 0.8108, label: 1, bag_size: 10794
+batch 299, loss: 0.8060, label: 1, bag_size: 45463
+batch 319, loss: 0.6053, label: 0, bag_size: 18682
+batch 339, loss: 0.5926, label: 0, bag_size: 67490
+batch 359, loss: 0.7931, label: 1, bag_size: 46442
+Epoch: 5, train_loss: 0.6897, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.5724
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 4 out of 20
+
+
+batch 19, loss: 0.6176, label: 0, bag_size: 64031
+batch 39, loss: 0.7866, label: 1, bag_size: 52446
+batch 59, loss: 0.7903, label: 1, bag_size: 20874
+batch 79, loss: 0.7847, label: 1, bag_size: 5960
+batch 99, loss: 0.6158, label: 0, bag_size: 10486
+batch 119, loss: 0.6011, label: 0, bag_size: 20816
+batch 139, loss: 0.5968, label: 0, bag_size: 35330
+batch 159, loss: 0.5985, label: 0, bag_size: 53629
+batch 179, loss: 0.7970, label: 1, bag_size: 13586
+batch 199, loss: 0.6124, label: 0, bag_size: 25346
+batch 219, loss: 0.7734, label: 1, bag_size: 8146
+batch 239, loss: 0.6234, label: 0, bag_size: 70497
+batch 259, loss: 0.7679, label: 1, bag_size: 8629
+batch 279, loss: 0.6086, label: 0, bag_size: 51853
+batch 299, loss: 0.7858, label: 1, bag_size: 62720
+batch 319, loss: 0.6181, label: 0, bag_size: 24361
+batch 339, loss: 0.6251, label: 0, bag_size: 97910
+batch 359, loss: 0.7801, label: 1, bag_size: 92858
+Epoch: 6, train_loss: 0.6896, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.4977
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 5 out of 20
+
+
+batch 19, loss: 0.7881, label: 1, bag_size: 46002
+batch 39, loss: 0.6042, label: 0, bag_size: 18676
+batch 59, loss: 0.8009, label: 1, bag_size: 11048
+batch 79, loss: 0.5903, label: 0, bag_size: 4623
+batch 99, loss: 0.5842, label: 0, bag_size: 9926
+batch 119, loss: 0.5766, label: 0, bag_size: 74770
+batch 139, loss: 0.8160, label: 1, bag_size: 4708
+batch 159, loss: 0.8223, label: 1, bag_size: 8693
+batch 179, loss: 0.5778, label: 0, bag_size: 59945
+batch 199, loss: 0.8455, label: 1, bag_size: 15758
+batch 219, loss: 0.8578, label: 1, bag_size: 63998
+batch 239, loss: 0.5642, label: 0, bag_size: 53629
+batch 259, loss: 0.8264, label: 1, bag_size: 50780
+batch 279, loss: 0.8119, label: 1, bag_size: 7847
+batch 299, loss: 0.8075, label: 1, bag_size: 23907
+batch 319, loss: 0.6009, label: 0, bag_size: 24361
+batch 339, loss: 0.7903, label: 1, bag_size: 66730
+batch 359, loss: 0.7756, label: 1, bag_size: 26765
+Epoch: 7, train_loss: 0.6887, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6886, val_error: 0.4516, auc: 0.5644
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 6 out of 20
+
+
+batch 19, loss: 0.6194, label: 0, bag_size: 65072
+batch 39, loss: 0.7791, label: 1, bag_size: 37612
+batch 59, loss: 0.6221, label: 0, bag_size: 21324
+batch 79, loss: 0.7692, label: 1, bag_size: 18952
+batch 99, loss: 0.6213, label: 0, bag_size: 73014
+batch 119, loss: 0.6124, label: 0, bag_size: 49439
+batch 139, loss: 0.7883, label: 1, bag_size: 14586
+batch 159, loss: 0.7797, label: 1, bag_size: 21468
+batch 179, loss: 0.7656, label: 1, bag_size: 116777
+batch 199, loss: 0.7620, label: 1, bag_size: 68802
+batch 219, loss: 0.7642, label: 1, bag_size: 70419
+batch 239, loss: 0.7738, label: 1, bag_size: 10954
+batch 259, loss: 0.6139, label: 0, bag_size: 58854
+batch 279, loss: 0.5976, label: 0, bag_size: 84237
+batch 299, loss: 0.8004, label: 1, bag_size: 78452
+batch 319, loss: 0.5937, label: 0, bag_size: 105745
+batch 339, loss: 0.7956, label: 1, bag_size: 52796
+batch 359, loss: 0.7809, label: 1, bag_size: 67678
+Epoch: 8, train_loss: 0.6894, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6886, val_error: 0.4516, auc: 0.5873
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 7 out of 20
+
+
+batch 19, loss: 0.7795, label: 1, bag_size: 50674
+batch 39, loss: 0.7827, label: 1, bag_size: 43299
+batch 59, loss: 0.7781, label: 1, bag_size: 56253
+batch 79, loss: 0.6139, label: 0, bag_size: 78172
+batch 99, loss: 0.7834, label: 1, bag_size: 66619
+batch 119, loss: 0.7825, label: 1, bag_size: 20703
+batch 139, loss: 0.6155, label: 0, bag_size: 17880
+batch 159, loss: 0.6078, label: 0, bag_size: 29600
+batch 179, loss: 0.8071, label: 1, bag_size: 95871
+batch 199, loss: 0.8391, label: 1, bag_size: 53194
+batch 219, loss: 0.5617, label: 0, bag_size: 10444
+batch 239, loss: 0.8307, label: 1, bag_size: 82539
+batch 259, loss: 0.5948, label: 0, bag_size: 11157
+batch 279, loss: 0.7945, label: 1, bag_size: 5960
+batch 299, loss: 0.7862, label: 1, bag_size: 12018
+batch 319, loss: 0.6105, label: 0, bag_size: 35320
+batch 339, loss: 0.6094, label: 0, bag_size: 20392
+batch 359, loss: 0.7833, label: 1, bag_size: 14586
+Epoch: 9, train_loss: 0.6897, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6886, val_error: 0.4516, auc: 0.4589
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 8 out of 20
+
+
+batch 19, loss: 0.6275, label: 0, bag_size: 53629
+batch 39, loss: 0.7655, label: 1, bag_size: 23907
+batch 59, loss: 0.6255, label: 0, bag_size: 37511
+batch 79, loss: 0.6220, label: 0, bag_size: 78623
+batch 99, loss: 0.7675, label: 1, bag_size: 56699
+batch 119, loss: 0.7562, label: 1, bag_size: 4706
+batch 139, loss: 0.7526, label: 1, bag_size: 79468
+batch 159, loss: 0.7569, label: 1, bag_size: 40916
+batch 179, loss: 0.6304, label: 0, bag_size: 35320
+batch 199, loss: 0.6287, label: 0, bag_size: 4623
+batch 219, loss: 0.7604, label: 1, bag_size: 11048
+batch 239, loss: 0.6276, label: 0, bag_size: 40234
+batch 259, loss: 0.6089, label: 0, bag_size: 55645
+batch 279, loss: 0.6032, label: 0, bag_size: 17752
+batch 299, loss: 0.6127, label: 0, bag_size: 71640
+batch 319, loss: 0.6107, label: 0, bag_size: 27027
+batch 339, loss: 0.7894, label: 1, bag_size: 73405
+batch 359, loss: 0.6046, label: 0, bag_size: 18463
+Epoch: 10, train_loss: 0.6893, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.5317
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 9 out of 20
+
+
+batch 19, loss: 0.7948, label: 1, bag_size: 79468
+batch 39, loss: 0.6157, label: 0, bag_size: 7645
+batch 59, loss: 0.6208, label: 0, bag_size: 64535
+batch 79, loss: 0.6247, label: 0, bag_size: 15498
+batch 99, loss: 0.6239, label: 0, bag_size: 4897
+batch 119, loss: 0.7860, label: 1, bag_size: 12928
+batch 139, loss: 0.6103, label: 0, bag_size: 67622
+batch 159, loss: 0.7895, label: 1, bag_size: 43299
+batch 179, loss: 0.6090, label: 0, bag_size: 68939
+batch 199, loss: 0.5990, label: 0, bag_size: 32928
+batch 219, loss: 0.5947, label: 0, bag_size: 22020
+batch 239, loss: 0.7872, label: 1, bag_size: 116777
+batch 259, loss: 0.6163, label: 0, bag_size: 18917
+batch 279, loss: 0.6121, label: 0, bag_size: 66590
+batch 299, loss: 0.7878, label: 1, bag_size: 20935
+batch 319, loss: 0.8015, label: 1, bag_size: 83358
+batch 339, loss: 0.5907, label: 0, bag_size: 80617
+batch 359, loss: 0.8076, label: 1, bag_size: 74525
+Epoch: 11, train_loss: 0.6896, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.5168
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 10 out of 20
+
+
+batch 19, loss: 0.8046, label: 1, bag_size: 20703
+batch 39, loss: 0.7989, label: 1, bag_size: 23707
+batch 59, loss: 0.7920, label: 1, bag_size: 65594
+batch 79, loss: 0.6147, label: 0, bag_size: 13191
+batch 99, loss: 0.7799, label: 1, bag_size: 20795
+batch 119, loss: 0.7763, label: 1, bag_size: 24139
+batch 139, loss: 0.6269, label: 0, bag_size: 108759
+batch 159, loss: 0.6225, label: 0, bag_size: 66024
+batch 179, loss: 0.6201, label: 0, bag_size: 15498
+batch 199, loss: 0.7722, label: 1, bag_size: 16939
+batch 219, loss: 0.6298, label: 0, bag_size: 3187
+batch 239, loss: 0.6243, label: 0, bag_size: 11191
+batch 259, loss: 0.7686, label: 1, bag_size: 16476
+batch 279, loss: 0.7667, label: 1, bag_size: 22294
+batch 299, loss: 0.6192, label: 0, bag_size: 58318
+batch 319, loss: 0.7852, label: 1, bag_size: 87222
+batch 339, loss: 0.8006, label: 1, bag_size: 4637
+batch 359, loss: 0.8005, label: 1, bag_size: 69982
+Epoch: 12, train_loss: 0.6891, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
+
+Val Set, val_loss: 0.6885, val_error: 0.4516, auc: 0.4972
+class 0: acc 1.0, correct 51/51
+class 1: acc 0.0, correct 0/42
+EarlyStopping counter: 11 out of 20
+
+
+batch 19, loss: 0.5972, label: 0, bag_size: 16745
+batch 39, loss: 0.5907, label: 0, bag_size: 35320
+batch 59, loss: 0.7966, label: 1, bag_size: 20795
+batch 79, loss: 0.5957, label: 0, bag_size: 88725
+batch 99, loss: 0.5898, label: 0, bag_size: 74288
+batch 119, loss: 0.5818, label: 0, bag_size: 27027
+batch 139, loss: 0.8188, label: 1, bag_size: 94707
+batch 159, loss: 0.5918, label: 0, bag_size: 51853
+batch 179, loss: 0.5912, label: 0, bag_size: 83245
+batch 199, loss: 0.5805, label: 0, bag_size: 125647
+batch 219, loss: 0.8232, label: 1, bag_size: 110037
+batch 239, loss: 0.8177, label: 1, bag_size: 56253
+batch 259, loss: 0.5924, label: 0, bag_size: 92089
+batch 279, loss: 0.6051, label: 0, bag_size: 84237
+batch 299, loss: 0.7866, label: 1, bag_size: 55873
+batch 319, loss: 0.7838, label: 1, bag_size: 28529
+batch 339, loss: 0.6079, label: 0, bag_size: 13356
+batch 359, loss: 0.6054, label: 0, bag_size: 106209
+Epoch: 13, train_loss: 0.6893, train_error: 0.4511
+class 0: acc 1.0, correct 202/202
+class 1: acc 0.0, correct 0/166
